@@ -5,7 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-//const passport = require('passport');
+const passport = require('passport');
 const flash    = require('connect-flash');
 const bodyParser   = require('body-parser');
 const session      = require('express-session');
@@ -23,13 +23,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-mongoose.connect('mongodb://localhost/project3')
-  .then(() => {
-    console.log('connected');
-  })
-  .catch(error => console.log(error));
-
-//require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport)// pass passport for configuration
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -39,10 +33,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(bodyParser());
 
 
-// app.use(session({ secret: 'hello' })); // session secret
-// app.use(passport.initialize());
-// app.use(passport.session()); // persistent login sessions
-// app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(session({ secret: 'hello' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 
@@ -59,7 +53,7 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  console.log(err.message)
   // render the error page
   res.status(err.status || 500);
   res.render('error');
