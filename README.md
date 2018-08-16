@@ -1,9 +1,9 @@
 # theBackstage
 
 -	Project Name
-The Backstage (provisional)
+The Backstage 
 -	Description
-The Backstage is a small fórum site that Works with the Songkick API to find musical events nearby filtered by your preferences, You can check them, join and interact with other users that wish to attend too.
+The Backstage is a small fórum site that Works with the Songkick API to find musical events nearby filtered by your preferences, You can check them, join them, and interact with other users that wish to attend too.
 -	User Stories
 o	Error handler 
 o	Homepage : Login and signup 
@@ -27,8 +27,9 @@ o	get/login
 o	post/login (Body: username, password) 
 o	get/signup
 o	post/signup (Body: username, password)
+o	get/profile/fill
+o	post/profile/fill (Body: Name, surname, age, description, list of favourite genres, location)
 o	get/profile
-o	post/profile (Body: Name, surname, age, description, list of favourite genres, location)
 o	get/main 
 o	get/event/:id
 o	post/event/:id/join (Body: nothing) 
